@@ -1,5 +1,10 @@
-function reducer(state = {}, action) {
-  return state;
+function foo(state = {}, action) {
+  return {
+    ...state,
+    foo: 'bar',
+  };
 }
 
-export default reducer;
+export default {
+  foo
+};

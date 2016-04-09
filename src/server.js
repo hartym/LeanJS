@@ -1,3 +1,7 @@
+/**
+ * This is the «server» entry point.
+ */
+
 import express from 'express'
 import path from 'path'
 import React from 'react'
@@ -15,7 +19,7 @@ import assets from './assets';
 /**
  * Create HTML from router props.
  */
-function render(props) {
+function render(initialState, props) {
   let innerHtml = ReactDOMServer.renderToString(<RouterContext {...props} />);
   let head = Helmet.rewind();
   let mainJs = assets.main.js;
@@ -31,7 +35,8 @@ function render(props) {
   </head>
   <body>
     <div id="root">${innerHtml}</div>
-    <script async="async" src="${mainJs}"></script>
+    <script>window.__INITIAL_STATE__  = ${JSON.stringify(initialState)};</script>
+    <script src="${mainJs}"></script>
   </body>
 </html>`;
 }
@@ -62,7 +67,7 @@ function configureServer(server, component) {
         res.redirect(redirect.pathname + redirect.search)
       } else if (props) {
         // RENDER
-        res.send(render(props));
+        res.send(render(store.getState(), props));
       } else {
         res.status(404).send('Not Found')
       }
