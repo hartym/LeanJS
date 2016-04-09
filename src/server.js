@@ -78,6 +78,14 @@ function configureServer(server, component) {
   return server;
 }
 
+/**
+ * Serve that shit.
+ *
+ * WARNING: Don't change the server message output to the console, as it is
+ * for now used in a regexp to detect server reload. This is an heritage from
+ * react-starter-kit, I guess they had a good reason to use this hack even if
+ * I'd like to remove it.
+ */
 let server = configureServer(new express(), ExampleApplication);
 
 server.listen(config.PORT, function(error) {
