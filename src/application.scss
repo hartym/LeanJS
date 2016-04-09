@@ -1,0 +1,13 @@
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  /* Show it's not fixed to the top */
+  min-height: 75rem;
+  padding-top: 6rem;
+}
+
+footer {
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+}

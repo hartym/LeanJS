@@ -1,0 +1,8 @@
+*.egg-info
+.docker-base*
+.git
+.idea
+build
+docs
+dist
+node_modules
