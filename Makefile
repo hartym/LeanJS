@@ -1,5 +1,5 @@
 DOCKER_IMAGE=rdorgueil/leanjs
-.PHONY: start build docker-build docker-run
+.PHONY: start build docker-build docker-run docker-run-bash
 
 start:
 	npm run start
@@ -12,3 +12,7 @@ docker-build: build
 
 docker-run:
 	docker run -it -p 3000:3000 $(DOCKER_IMAGE)
+
+docker-run-bash:
+	docker run -it -p 3000:3000 $(DOCKER_IMAGE) bash
+
