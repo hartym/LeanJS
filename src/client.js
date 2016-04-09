@@ -12,11 +12,11 @@ import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
 // Local imports
-import Application from './application'
+import ExampleApplication from './example-application'
 import configureStore from './store'
 
 // Styles
-import appStyles from './application.scss'
+import appStyles from './styles/index.scss'
 
 const store = configureStore(window && window.__INITIAL_STATE__ || undefined);
 const history = syncHistoryWithStore(browserHistory, store);
@@ -24,7 +24,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 FastClick.attach(document.body);
 
 ReactDOM.render(
-  <Application store={store} history={history} />,
+  <ExampleApplication store={store} history={history} />,
   document.getElementById('root')
 );
 

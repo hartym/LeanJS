@@ -10,10 +10,11 @@ import { match, browserHistory, RouterContext } from 'react-router'
 import Helmet from 'react-helmet'
 
 import config from '../config'
-
-import Application from './application'
+import ExampleApplication from './example-application'
 import configureStore from './store'
 
+// Special import that is built by webpack's AssetPlugin, containing the
+// computed names of our assets (with hashes).
 import assets from './assets';
 
 /**
@@ -77,7 +78,7 @@ function configureServer(server, component) {
   return server;
 }
 
-let server = configureServer(new express(), Application);
+let server = configureServer(new express(), ExampleApplication);
 
 server.listen(config.PORT, function(error) {
   if (error) {
