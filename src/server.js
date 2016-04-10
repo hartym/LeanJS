@@ -2,26 +2,35 @@
  * This is the «server» entry point.
  */
 
+// Libraries
 import express from 'express'
 import path from 'path'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import { match, browserHistory, RouterContext } from 'react-router'
+import { Provider } from 'react-redux'
+import { match, RouterContext, createMemoryHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 import Helmet from 'react-helmet'
 
+// Local imports
 import config from '../config'
-import ExampleApplication from './example-application'
+import routes from './routes'
 import configureStore from './store'
 
 // Special import that is built by webpack's AssetPlugin, containing the
 // computed names of our assets (with hashes).
 import assets from './assets';
 
+
 /**
  * Create HTML from router props.
  */
-function render(initialState, props) {
-  let innerHtml = ReactDOMServer.renderToString(<RouterContext {...props} />);
+function render(store, renderProps) {
+  let innerHtml = ReactDOMServer.renderToString(
+    <Provider store={store}>
+      <RouterContext {...renderProps}/>
+    </Provider>
+  );
   let head = Helmet.rewind();
   let mainJs = assets.main.js;
   let mainCss = assets.main.css ? `<link href="${assets.main.css}" media="all" rel="stylesheet" />` : '';
@@ -36,7 +45,7 @@ function render(initialState, props) {
   </head>
   <body>
     <div id="root">${innerHtml}</div>
-    <script>window.__INITIAL_STATE__  = ${JSON.stringify(initialState)};</script>
+    <script>window.__INITIAL_STATE__  = ${JSON.stringify(store.getState())};</script>
     <script src="${mainJs}"></script>
   </body>
 </html>`;
@@ -45,7 +54,7 @@ function render(initialState, props) {
 /**
  * Configure server
  */
-function configureServer(server, component) {
+function configureServer(server) {
   // Add production middlewares
   if (!config.DEBUG) {
     server.use(require('compression')())
@@ -54,21 +63,19 @@ function configureServer(server, component) {
   // Static files middleware
   server.use(express.static(path.join(__dirname, './public/')))
 
-  let store = configureStore();
-
   // Main handler
   server.get('*', (req, res) => {
-    match({
-      routes: component({ history: browserHistory, store }),
-      location: req.url
-    }, (err, redirect, props) => {
-      if (err) {
-        res.status(500).send(err.message)
-      } else if (redirect) {
-        res.redirect(redirect.pathname + redirect.search)
-      } else if (props) {
-        // RENDER
-        res.send(render(store.getState(), props));
+    const memoryHistory = createMemoryHistory(req.url)
+    const store = configureStore(memoryHistory)
+    const history = syncHistoryWithStore(memoryHistory, store)
+
+    match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
+      if (error) {
+        res.status(500).send(error.message)
+      } else if (redirectLocation) {
+        res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+      } else if (renderProps) {
+        res.send(render(store, renderProps));
       } else {
         res.status(404).send('Not Found')
       }
@@ -86,7 +93,7 @@ function configureServer(server, component) {
  * react-starter-kit, I guess they had a good reason to use this hack even if
  * I'd like to remove it.
  */
-let server = configureServer(new express(), ExampleApplication);
+let server = configureServer(new express());
 
 server.listen(config.PORT, function(error) {
   if (error) {

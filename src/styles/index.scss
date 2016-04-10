@@ -1,4 +1,13 @@
+// Local overrides
+@import './variables';
+@import './mixins';
+
+// Get Big Bertha
 @import '~bootstrap/scss/bootstrap';
+
+// Your styles below. Feel free to organize as you wish, using BEM, something
+// similar or just create a big mess here. Practicality beats purity,
+// especially if it generates more $$$.
 
 body {
   /* Show it's not fixed to the top */

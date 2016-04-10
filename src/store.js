@@ -1,27 +1,41 @@
 /**
- * Store.js
- * ========
- * Manage the application redux store.
- */
+* Store.js
+* ========
+* Manage the application redux store.
+*/
 
 // Libraries
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import createLogger from 'redux-logger'
-import { routerReducer } from 'react-router-redux'
+import { routerReducer, routerMiddleware } from 'react-router-redux'
 
-// Local
-import reducers from './reducers'
+/**
+ * Factory for root reducer, taking into account things like react-router. Will
+ * be used for store creation, but also replacing the root reducer if required
+ * because of HMR.
+ */
+function buildRootReducer() {
+  return combineReducers({
+    ...require('./reducers').default,
+    routing: routerReducer,
+  });
+}
 
-export default function configureStore(initialState) {
+/**
+ * Store Factory.
+ * Enables chrome extension based react development tools.
+ *
+ * TODO Should probably do it only if DEBUG.
+ */
+export default function configureStore(history, initialState) {
   const store = createStore(
-    combineReducers({
-      ...reducers,
-      routing: routerReducer
-    }),
+    buildRootReducer(),
     initialState,
     compose(
-      applyMiddleware(thunkMiddleware, createLogger()),
+      applyMiddleware(
+        thunkMiddleware,
+        routerMiddleware(history)
+      ),
       typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
     )
   );
@@ -29,10 +43,9 @@ export default function configureStore(initialState) {
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers').default
-      store.replaceReducer(nextRootReducer)
+      store.replaceReducer(buildRootReducer())
     });
   }
 
-  return store
+  return store;
 }
