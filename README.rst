@@ -4,6 +4,25 @@ LeanJS
 Yet another starter kit for Universal NodeJS applications using React, Redux,
 Webpack and Bootstrap 4.
 
+Dependency choice:
+
+* Babel
+* Express
+* React (15)
+* React Router
+* Redux
+* Webpack
+
+And a few glue libraries (like react-redux and react-router-redux).
+
+Directory structure:
+
+* bin: all scripts to help manage the project should go here.
+* build: where we build production releases.
+* config: all declarative configuration should go here, including webpack configuration.
+* src: all your application(s) source code belongs to there.
+
+
 
 Install
 :::::::
