@@ -15,7 +15,7 @@
 function foo (state = {}, action) {
   return {
     ...state,
-    foo: 'bar',
+    foo: 'bar'
   }
 }
 

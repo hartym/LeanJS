@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import Layout from './example/components/Layout'
 import Home from './example/components/Home'

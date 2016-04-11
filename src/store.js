@@ -16,7 +16,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 function buildRootReducer () {
   return combineReducers({
     ...require('./reducers').default,
-    routing: routerReducer,
+    routing: routerReducer
   })
 }
 
@@ -37,7 +37,7 @@ export default function configureStore (history, initialState) {
       ),
       typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
     )
-  )
+  );
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

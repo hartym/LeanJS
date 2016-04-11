@@ -20,7 +20,7 @@ import configureStore from './store'
 /**
  * Create HTML from router props.
  */
-function render (store, renderProps) {
+function render(store, renderProps) {
   let innerHtml = ReactDOMServer.renderToString(
     <Provider store={store}>
       <RouterContext {...renderProps}/>
@@ -51,7 +51,7 @@ function render (store, renderProps) {
 /**
  * Configure server
  */
-function configureServer (server) {
+function configureServer(server) {
   // Add production middlewares
   if (!config.DEBUG) {
     server.use(require('compression')())
@@ -66,7 +66,7 @@ function configureServer (server) {
     const store = configureStore(memoryHistory)
     const history = syncHistoryWithStore(memoryHistory, store)
 
-    match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    match({history, routes, location: req.url}, (error, redirectLocation, renderProps) => {
       if (error) {
         res.status(500).send(error.message)
       } else if (redirectLocation) {
@@ -94,8 +94,8 @@ let server = configureServer(new Express())
 
 server.listen(config.PORT, function (error) {
   if (error) {
-    console.error(error)
+    console.error(error);  // eslint-disable-line no-console
   } else {
-    console.info('The server is running. http://localhost:%s/', config.PORT)
+    console.info('The server is running. http://localhost:%s/', config.PORT);  // eslint-disable-line no-console
   }
 })
