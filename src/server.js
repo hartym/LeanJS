@@ -1,25 +1,20 @@
 /**
  * This is the «server» entry point.
+ *
+ * It will be used to render the server side, SEO-friendly, version of the site.
  */
 
-// Libraries
-import express from 'express'
-import path from 'path'
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
-import { Provider } from 'react-redux'
-import { match, RouterContext, createMemoryHistory } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
-import Helmet from 'react-helmet'
-
-// Local imports
-import config from '../config'
-import routes from './routes'
-import configureStore from './store'
-
-// Special import that is built by webpack's AssetPlugin, containing the
-// computed names of our assets (with hashes).
-import assets from './assets';
+import Express from 'express';
+import path from 'path';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { Provider } from 'react-redux';
+import { match, RouterContext, createMemoryHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import Helmet from 'react-helmet';
+import config from '../config';
+import routes from './routes';
+import configureStore from './store';
 
 
 /**
@@ -32,6 +27,8 @@ function render(store, renderProps) {
     </Provider>
   );
   let head = Helmet.rewind();
+
+  let assets = require('./assets');
   let mainJs = assets.main.js;
   let mainCss = assets.main.css ? `<link href="${assets.main.css}" media="all" rel="stylesheet" />` : '';
 
@@ -61,13 +58,13 @@ function configureServer(server) {
   }
 
   // Static files middleware
-  server.use(express.static(path.join(__dirname, './public/')))
+  server.use(Express.static(path.join(__dirname, './public/')));
 
   // Main handler
   server.get('*', (req, res) => {
-    const memoryHistory = createMemoryHistory(req.url)
-    const store = configureStore(memoryHistory)
-    const history = syncHistoryWithStore(memoryHistory, store)
+    const memoryHistory = createMemoryHistory(req.url);
+    const store = configureStore(memoryHistory);
+    const history = syncHistoryWithStore(memoryHistory, store);
 
     match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
       if (error) {
@@ -93,12 +90,12 @@ function configureServer(server) {
  * react-starter-kit, I guess they had a good reason to use this hack even if
  * I'd like to remove it.
  */
-let server = configureServer(new express());
+let server = configureServer(new Express());
 
-server.listen(config.PORT, function(error) {
+server.listen(config.PORT, function (error) {
   if (error) {
     console.error(error)
   } else {
-    console.info("🌎 — The server is running. http://localhost:%s/", config.PORT)
+    console.info("The server is running. http://localhost:%s/", config.PORT)
   }
 });

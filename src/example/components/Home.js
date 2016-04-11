@@ -1,5 +1,5 @@
-import React from 'react'
-import Lorem from './Lorem'
+import React from 'react';
+import Lorem from './Lorem';
 
 const Home = () => (
   <div>

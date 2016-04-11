@@ -1,13 +1,12 @@
 /**
-* Store.js
-* ========
-* Manage the application redux store.
-*/
+ * Store.js
+ * ========
+ * Manage the application redux store.
+ */
 
-// Libraries
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-import { routerReducer, routerMiddleware } from 'react-router-redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
 
 /**
  * Factory for root reducer, taking into account things like react-router. Will
