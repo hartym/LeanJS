@@ -49,8 +49,8 @@ const serverConfig = {
         ...defaultConfig.plugins,
         new webpack.DefinePlugin({ ...config, 'process.env.BROWSER': false }),
         new webpack.BannerPlugin('require("source-map-support").install();',
-        { raw: true, entryOnly: false }),
-    ],
+        { raw: true, entryOnly: false })
+    ]
 };
 
 export default serverConfig;

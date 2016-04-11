@@ -11,9 +11,9 @@ export default {
       // modules: true,
       localIdentName: config.DEBUG ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
       // CSS Nano http://cssnano.co/options/
-      minimize: !config.DEBUG,
+      minimize: !config.DEBUG
     })}!sass?${JSON.stringify({
-      sourceMap: config.DEBUG,
+      sourceMap: config.DEBUG
     })}`
   ]
 };
