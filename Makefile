@@ -1,6 +1,7 @@
 # Configuration (override with environment)
 NODE_BIN ?= node_modules/.bin
 BABEL ?= $(NODE_BIN)/babel-node
+DOCKER_SERVER ?= $(shell docker-machine ip)
 DOCKER_IMAGE ?= rdorgueil/leanjs
 
 # Phony targets (targets without matching file)
@@ -18,7 +19,7 @@ build:
 
 # Build a production docker image.
 docker-build: build
-	(cd build; docker build -t $(DOCKER_IMAGE) .)
+	(cd build; NPM_CONFIG_REGISTRY=http://$(DOCKER_SERVER):8081/content/groups/npm/ docker build -t $(DOCKER_IMAGE) .)
 
 # Runs the docker image (won't rebuild, you're responsible for triggering the builds).
 docker-run:
