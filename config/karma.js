@@ -20,11 +20,13 @@ module.exports = function (config) {
       'test/**/*.js'
     ],
 
+    // we need all our source to be processed by webpack, as ES6 is not understandable by browsers.
     preprocessors: {
       'test/**/*.js': ['webpack'],
       'src/**/*.js': ['webpack']
     },
 
+    // Transform tape output to nice looking console output, and send to istanbul for coverage.
     reporters: ['tap', 'coverage'],
 
     coverageReporter: {
@@ -34,15 +36,17 @@ module.exports = function (config) {
       ]
     },
 
+    // Load our Karma specific webpack configuration, that extends the base one.
     webpack: require('./webpack/karma'),
 
+    // TODO: is there any reason for that?
     webpackServer: {
       noInfo: true
     },
 
+    // TODO: is there any reason for that?
     webpackMiddleware: {
       stats: 'errors-only'
     }
-
   });
 };
