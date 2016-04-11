@@ -30,4 +30,4 @@ docker-run-bash:
 	docker run -it -p 3000:3000 $(DOCKER_IMAGE) bash
 
 test:
-	@$(NODE_BIN)/karma start config/karma.js | bin/faucet
+	$(NODE_BIN)/karma start config/karma.js | bin/faucet
