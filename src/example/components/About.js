@@ -8,7 +8,11 @@ const About = () => (
       bazillion starter kits available out there. Same Same but Different.
       Leaner, mostly.
     </p>
-    <p><a className="btn btn-lg btn-success" href="#" role="button">Read the docs</a></p>
+    <p>
+      <a className="btn btn-lg btn-success" href="https://github.com/hartym/LeanJS/blob/master/README.rst" target="_blank" role="button">
+        Read the docs
+      </a>
+    </p>
   </div>
 );
 
