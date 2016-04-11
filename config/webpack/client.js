@@ -1,10 +1,10 @@
-import path from 'path'
-import webpack from 'webpack'
-import AssetsPlugin from 'assets-webpack-plugin'
-import CompressionPlugin from 'compression-webpack-plugin'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import config from '..'
-import defaultConfig from './default'
+import path from 'path';
+import webpack from 'webpack';
+import AssetsPlugin from 'assets-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import config from '../index';
+import defaultConfig from './default';
 
 const clientConfig = {
   ...defaultConfig,
@@ -40,12 +40,12 @@ const clientConfig = {
           // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
           screw_ie8: true,
           // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
-          warnings: config.VERBOSE,
-        },
+          warnings: config.VERBOSE
+        }
       }),
       new webpack.optimize.AggressiveMergingPlugin(),
-      new CompressionPlugin(),
-    ] : []),
+      new CompressionPlugin()
+    ] : [])
   ]
 };
 
