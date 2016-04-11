@@ -1,5 +1,10 @@
-DOCKER_IMAGE=rdorgueil/leanjs
-.PHONY: start build docker-build docker-run docker-run-bash
+# Configuration (override with environment)
+NODE_BIN ?= node_modules/.bin
+BABEL ?= $(NODE_BIN)/babel-node
+DOCKER_IMAGE ?= rdorgueil/leanjs
+
+# Phony targets (targets without matching file)
+.PHONY: start build docker-build docker-run docker-run-bash test
 
 # Start a development server.
 # You need to run "npm install" before that.
@@ -23,3 +28,5 @@ docker-run:
 docker-run-bash:
 	docker run -it -p 3000:3000 $(DOCKER_IMAGE) bash
 
+test:
+	$(BABEL) test.js | $(NODE_BIN)/faucet
