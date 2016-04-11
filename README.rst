@@ -15,13 +15,20 @@ Dependency choice:
 
 And a few glue libraries (like react-redux and react-router-redux).
 
+Tests, coverage and linting:
+
+* ESLint with "JavaScript Standard Style" and a few addons to make it behave correctly with React.
+* Istanbul
+* Karma
+* Tape
+
 Directory structure:
 
-* bin: all scripts to help manage the project should go here.
-* build: where we build production releases.
-* config: all declarative configuration should go here, including webpack configuration.
-* src: all your application(s) source code belongs to there.
-
+* bin: management and instrumentation scripts
+* build: production releases
+* config: declarative configuration, including webpack configuration.
+* src: application(s) source code.
+* test: tape tests.
 
 
 Install
@@ -34,6 +41,13 @@ Run (development)
 :::::::::::::::::
 
     make
+
+
+Tests and code style
+::::::::::::::::::::
+
+    make lint
+    make test
 
 
 Start hacking

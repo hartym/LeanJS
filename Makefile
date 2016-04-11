@@ -29,5 +29,8 @@ docker-run:
 docker-run-bash:
 	docker run -it -p 3000:3000 $(DOCKER_IMAGE) bash
 
+lint:
+	$(NODE_BIN)/eslint src test
+
 test:
 	$(NODE_BIN)/karma start config/karma.js | bin/faucet
