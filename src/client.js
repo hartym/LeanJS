@@ -15,7 +15,9 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store';
-import appStyles from './styles/index.scss'
+
+// Styles.
+require('./styles/index.scss');
 
 // Configure store and browser-friendly history
 const store = configureStore(browserHistory, window.__INITIAL_STATE__);
