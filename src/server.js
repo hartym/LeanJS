@@ -4,33 +4,33 @@
  * It will be used to render the server side, SEO-friendly, version of the site.
  */
 
-import Express from 'express';
-import path from 'path';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { Provider } from 'react-redux';
-import { match, RouterContext, createMemoryHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import Helmet from 'react-helmet';
-import config from '../config';
-import routes from './routes';
-import configureStore from './store';
+import Express from 'express'
+import path from 'path'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import { Provider } from 'react-redux'
+import { match, RouterContext, createMemoryHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import Helmet from 'react-helmet'
+import config from '../config'
+import routes from './routes'
+import configureStore from './store'
 
 
 /**
  * Create HTML from router props.
  */
-function render(store, renderProps) {
+function render (store, renderProps) {
   let innerHtml = ReactDOMServer.renderToString(
     <Provider store={store}>
       <RouterContext {...renderProps}/>
     </Provider>
-  );
-  let head = Helmet.rewind();
+  )
+  let head = Helmet.rewind()
 
-  let assets = require('./assets');
-  let mainJs = assets.main.js;
-  let mainCss = assets.main.css ? `<link href="${assets.main.css}" media="all" rel="stylesheet" />` : '';
+  let assets = require('./assets')
+  let mainJs = assets.main.js
+  let mainCss = assets.main.css ? `<link href="${assets.main.css}" media="all" rel="stylesheet" />` : ''
 
   return `<!doctype html>
 <html ${head.htmlAttributes.toString()}>
@@ -45,26 +45,26 @@ function render(store, renderProps) {
     <script>window.__INITIAL_STATE__  = ${JSON.stringify(store.getState())};</script>
     <script src="${mainJs}"></script>
   </body>
-</html>`;
+</html>`
 }
 
 /**
  * Configure server
  */
-function configureServer(server) {
+function configureServer (server) {
   // Add production middlewares
   if (!config.DEBUG) {
     server.use(require('compression')())
   }
 
   // Static files middleware
-  server.use(Express.static(path.join(__dirname, './public/')));
+  server.use(Express.static(path.join(__dirname, './public/')))
 
   // Main handler
   server.get('*', (req, res) => {
-    const memoryHistory = createMemoryHistory(req.url);
-    const store = configureStore(memoryHistory);
-    const history = syncHistoryWithStore(memoryHistory, store);
+    const memoryHistory = createMemoryHistory(req.url)
+    const store = configureStore(memoryHistory)
+    const history = syncHistoryWithStore(memoryHistory, store)
 
     match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
       if (error) {
@@ -72,14 +72,14 @@ function configureServer(server) {
       } else if (redirectLocation) {
         res.redirect(302, redirectLocation.pathname + redirectLocation.search)
       } else if (renderProps) {
-        res.send(render(store, renderProps));
+        res.send(render(store, renderProps))
       } else {
         res.status(404).send('Not Found')
       }
     })
-  });
+  })
 
-  return server;
+  return server
 }
 
 /**
@@ -90,12 +90,12 @@ function configureServer(server) {
  * react-starter-kit, I guess they had a good reason to use this hack even if
  * I'd like to remove it.
  */
-let server = configureServer(new Express());
+let server = configureServer(new Express())
 
 server.listen(config.PORT, function (error) {
   if (error) {
     console.error(error)
   } else {
-    console.info("The server is running. http://localhost:%s/", config.PORT)
+    console.info('The server is running. http://localhost:%s/', config.PORT)
   }
-});
+})

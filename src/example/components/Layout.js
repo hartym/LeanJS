@@ -1,20 +1,20 @@
-import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import React from 'react'
+import { Link, IndexLink } from 'react-router'
 
-export default function Layout({ children }) {
+export default function Layout ({ children }) {
   return (
     <div>
-      <nav className="navbar navbar-fixed-top navbar-light bg-faded">
-        <div className="container">
-          <a className="navbar-brand" href="#">LeanJS</a>
-          <ul className="nav navbar-nav">
-            <li className="nav-item">
-              <IndexLink className="nav-link" to="/" activeClassName="active">
+      <nav className='navbar navbar-fixed-top navbar-light bg-faded'>
+        <div className='container'>
+          <a className='navbar-brand' href='#'>LeanJS</a>
+          <ul className='nav navbar-nav'>
+            <li className='nav-item'>
+              <IndexLink className='nav-link' to='/' activeClassName='active'>
                 Index
               </IndexLink>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about" activeClassName="active">
+            <li className='nav-item'>
+              <Link className='nav-link' to='/about' activeClassName='active'>
                 About
               </Link>
             </li>
@@ -22,8 +22,8 @@ export default function Layout({ children }) {
         </div>
       </nav>
 
-      <div className="container">
-        <div className="row row-offcanvas row-offcanvas-right">
+      <div className='container'>
+        <div className='row row-offcanvas row-offcanvas-right'>
           {children}
         </div>
       </div>
@@ -35,5 +35,5 @@ export default function Layout({ children }) {
           license, the glue is beerware.</p>
       </footer>
     </div>
-  );
+  )
 }

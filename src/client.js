@@ -7,44 +7,44 @@
  * TODO: make the hot reload thing work, react-router make it tough to get it right.
  */
 
-import 'babel-polyfill';
-import FastClick from 'fastclick';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import configureStore from './store';
+import 'babel-polyfill'
+import FastClick from 'fastclick'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { Router, browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import configureStore from './store'
 
 // Styles.
-require('./styles/index.scss');
+require('./styles/index.scss')
 
 // Configure store and browser-friendly history
-const store = configureStore(browserHistory, window.__INITIAL_STATE__);
-const history = syncHistoryWithStore(browserHistory, store);
+const store = configureStore(browserHistory, window.__INITIAL_STATE__)
+const history = syncHistoryWithStore(browserHistory, store)
 
 // Apparently, fat fingers need to go faster on mobiles. Or is it browsers?
-FastClick.attach(document.body);
+FastClick.attach(document.body)
 
 
 const render = () => {
-  let routes = require('./routes').default;
+  let routes = require('./routes').default
 
-  // Render the client side react component.
+    // Render the client side react component.
   ReactDOM.render(
-    <Provider store={store}>
-      <Router history={history} routes={routes}/>
-    </Provider>,
-    document.getElementById('root')
-  );
-};
+        <Provider store={store}>
+            <Router history={history} routes={routes}/>
+        </Provider>,
+        document.getElementById('root')
+    )
+}
 
-render();
+render()
 
 // Hot Module Reload?
 if (module.hot) {
-  // Whenever a new version of App.js is available
+    // Whenever a new version of App.js is available
   module.hot.accept('./routes', function () {
-    setTimeout(render);
+    setTimeout(render)
   })
 }

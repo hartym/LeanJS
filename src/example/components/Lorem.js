@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 const Lorem = () => (
-  <div className="row">
-    <div className="col-lg-6">
+  <div className='row'>
+    <div className='col-lg-6'>
       <h4>Subheading</h4>
       <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
@@ -24,6 +24,6 @@ const Lorem = () => (
       <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
     </div>
   </div>
-);
+)
 
-export default Lorem;
+export default Lorem

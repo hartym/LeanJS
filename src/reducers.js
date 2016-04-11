@@ -12,14 +12,14 @@
  * @param action
  * @returns {{foo: string}}
  */
-function foo(state = {}, action) {
+function foo (state = {}, action) {
   return {
     ...state,
     foo: 'bar',
-  };
+  }
 }
 
 // Exports
 export default {
   foo
-};
+}
