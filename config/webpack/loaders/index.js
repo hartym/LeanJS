@@ -8,7 +8,7 @@ export default [
   { test: /\.json$/, loader: 'json-loader' },
   { test: /\.txt$/, loader: 'raw-loader' },
   {
-    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: 'url-loader',
     query: {
       name: config.DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
@@ -16,7 +16,7 @@ export default [
     }
   },
   {
-    test: /\.(eot|ttf|wav|mp3)$/,
+    test: /\.(ttf|eot|wav|mp3)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: 'file-loader',
     query: {
       name: config.DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]'

@@ -1,5 +1,6 @@
 import React from 'react'
 import Lorem from './Lorem'
+import ReadTheDocs from './ReadTheDocs'
 
 const Home = () => (
   <div>
@@ -10,12 +11,7 @@ const Home = () => (
         a good base for universal react applications.
       </p>
       <p>
-        <a className="btn btn-lg btn-success"
-          href="https://github.com/hartym/LeanJS/blob/master/README.rst"
-          target="_blank" role="button"
-        >
-          Read the docs
-        </a>
+        <ReadTheDocs />
       </p>
     </div>
     <Lorem />
