@@ -24,11 +24,12 @@ Tests, coverage and linting:
 
 Directory structure:
 
-* bin: management and instrumentation scripts
-* build: production releases
+* bin: management and instrumentation scripts.
+* build: production releases (out of version control).
+* coverage: generated coverage data (out of version control).
 * config: declarative configuration, including webpack configuration.
 * src: application(s) source code.
-* test: tape tests.
+* test: tests, using tape as a default.
 
 
 Install
