@@ -7,11 +7,13 @@ class Layout extends React.Component {
       <div>
         <nav className='navbar navbar-fixed-top navbar-light bg-faded'>
           <div className='container'>
-            <a className='navbar-brand' href='#'>LeanJS</a>
+            <IndexLink className='navbar-brand' to='/'>
+              LeanJS
+            </IndexLink>
             <ul className='nav navbar-nav'>
               <li className='nav-item'>
                 <IndexLink className='nav-link' to='/' activeClassName='active'>
-                  Index
+                  Home
                 </IndexLink>
               </li>
               <li className='nav-item'>
@@ -24,7 +26,7 @@ class Layout extends React.Component {
         </nav>
 
         <div className='container'>
-          <div className='row row-offcanvas row-offcanvas-right'>
+          <div className='row'>
             {this.props.children}
           </div>
         </div>
@@ -32,8 +34,10 @@ class Layout extends React.Component {
         <hr />
 
         <footer>
-          <p>This is a sample project that can be used as a base. Each libraries used or re-used is subject to its own
-            license, the glue is beerware.</p>
+          <p>
+            This is a sample project that can be used as a base. Each libraries used or re-used is subject to its own
+            license, the glue is beerware.
+          </p>
         </footer>
       </div>
     )
