@@ -7,6 +7,9 @@ Webpack and Bootstrap 4.
 .. image:: https://travis-ci.org/hartym/LeanJS.svg?branch=master
     :target: https://travis-ci.org/hartym/LeanJS
 
+.. image:: https://david-dm.org/hartym/LeanJS.svg
+    :target: https://david-dm.org/hartym/LeanJS
+
 Dependencies
 ::::::::::::
 
