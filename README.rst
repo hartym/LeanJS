@@ -106,4 +106,5 @@ Good luck.
 
 
 ---
-Made with ♥ by Romain Dorgueil ([@rdorgueil](https://twitter.com/rdorgueil)) and [contributors](https://github.com/hartym/LeanJS/graphs/contributors)
+
+Made with ♥ by `Romain Dorgueil <https://twitter.com/rdorgueil>`_ and `contributors <https://github.com/hartym/LeanJS/graphs/contributors>`_.
