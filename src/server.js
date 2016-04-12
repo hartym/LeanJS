@@ -16,21 +16,21 @@ import config from '../config'
 import routes from './routes'
 import configureStore from './store'
 
-
 /**
  * Create HTML from router props.
  */
-function render(store, renderProps) {
-  let innerHtml = ReactDOMServer.renderToString(
+function render (store, renderProps) {
+  const innerHtml = ReactDOMServer.renderToString(
     <Provider store={store}>
-      <RouterContext {...renderProps}/>
+      <RouterContext {...renderProps} />
     </Provider>
   )
-  let head = Helmet.rewind()
+  const head = Helmet.rewind()
 
-  let assets = require('./assets')
-  let mainJs = assets.main.js
-  let mainCss = assets.main.css ? `<link href="${assets.main.css}" media="all" rel="stylesheet" />` : ''
+  const assets = require('./assets')
+  const mainJs = assets.main.js
+  const mainCss = assets.main.css
+    ? `<link href="${assets.main.css}" media="all" rel="stylesheet" />` : ''
 
   return `<!doctype html>
 <html ${head.htmlAttributes.toString()}>
@@ -51,7 +51,7 @@ function render(store, renderProps) {
 /**
  * Configure server
  */
-function configureServer(server) {
+function configureServer (server) {
   // Add production middlewares
   if (!config.DEBUG) {
     server.use(require('compression')())
@@ -66,7 +66,7 @@ function configureServer(server) {
     const store = configureStore(memoryHistory)
     const history = syncHistoryWithStore(memoryHistory, store)
 
-    match({history, routes, location: req.url}, (error, redirectLocation, renderProps) => {
+    match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
       if (error) {
         res.status(500).send(error.message)
       } else if (redirectLocation) {
@@ -90,12 +90,12 @@ function configureServer(server) {
  * react-starter-kit, I guess they had a good reason to use this hack even if
  * I'd like to remove it.
  */
-let server = configureServer(new Express())
+const server = configureServer(new Express())
 
-server.listen(config.PORT, function (error) {
+server.listen(config.PORT, (error) => {
   if (error) {
-    console.error(error);  // eslint-disable-line no-console
+    console.error(error)  // eslint-disable-line no-console
   } else {
-    console.info('The server is running. http://localhost:%s/', config.PORT);  // eslint-disable-line no-console
+    console.info('The server is running. http://localhost:%s/', config.PORT)  // eslint-disable-line no-console
   }
 })
