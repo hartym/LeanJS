@@ -29,8 +29,10 @@ docker-run:
 docker-run-bash:
 	docker run -it -p 3000:3000 $(DOCKER_IMAGE) bash
 
+# Check coding standards
 lint:
-	$(NODE_BIN)/eslint src test
+	$(NODE_BIN)/eslint config src test
 
+# Run the test suite. For now, only client side tests are running, in a chrome browser.
 test:
 	$(NODE_BIN)/karma start config/karma.js | bin/faucet
