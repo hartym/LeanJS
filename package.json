@@ -43,6 +43,7 @@
     "babel-polyfill": "^6.3.14",
     "compression": "^1.6.1",
     "express": "^4.13.4",
+    "font-awesome": "^4.5.0",
     "isomorphic-fetch": "^2.1.1",
     "pretty-error": "^2.0.0",
     "react": "^15.0.1",
