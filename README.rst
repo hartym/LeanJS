@@ -104,3 +104,6 @@ Final word
 
 Good luck.
 
+
+---
+Made with ♥ by Romain Dorgueil ([@rdorgueil](https://twitter.com/rdorgueil)) and [contributors](https://github.com/hartym/LeanJS/graphs/contributors)
