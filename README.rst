@@ -9,6 +9,9 @@ Webpack and Bootstrap 4.
 
 .. image:: https://david-dm.org/hartym/LeanJS.svg
     :target: https://david-dm.org/hartym/LeanJS
+    
+.. image:: https://coveralls.io/repos/github/hartym/LeanJS/badge.svg?branch=master
+    :target: https://coveralls.io/github/hartym/LeanJS?branch=master
 
 Dependencies
 ::::::::::::
