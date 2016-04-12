@@ -1,10 +1,10 @@
-import path from 'path';
-import webpack from 'webpack';
-import AssetsPlugin from 'assets-webpack-plugin';
-import CompressionPlugin from 'compression-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import config from '../index';
-import defaultConfig from './default';
+import path from 'path'
+import webpack from 'webpack'
+import AssetsPlugin from 'assets-webpack-plugin'
+import CompressionPlugin from 'compression-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import config from '../index'
+import defaultConfig from './default'
 
 const clientConfig = {
   ...defaultConfig,
@@ -15,7 +15,7 @@ const clientConfig = {
     ...defaultConfig.output,
     path: path.join(defaultConfig.output.path, 'public'),
     filename: config.DEBUG ? '[name].js?[chunkhash]' : '[name].[chunkhash].js',
-    chunkFilename: config.DEBUG ? '[name].[id].js?[chunkhash]' : '[name].[id].[chunkhash].js',
+    chunkFilename: config.DEBUG ? '[name].[id].js?[chunkhash]' : '[name].[id].[chunkhash].js'
   },
 
   plugins: [
@@ -28,12 +28,12 @@ const clientConfig = {
     new AssetsPlugin({
       path: path.resolve(__dirname, '../../build'),
       filename: 'assets.js',
-      processOutput: x => `module.exports = ${JSON.stringify(x)};`,
+      processOutput: (x) => `module.exports = ${JSON.stringify(x)};`
     }),
 
     // Add production plugins if we're doing an optimized build
     ...(!config.DEBUG ? [
-      new ExtractTextPlugin("[name].[chunkhash].css", { allChunks: true }),
+      new ExtractTextPlugin('[name].[chunkhash].css', { allChunks: true }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -47,12 +47,13 @@ const clientConfig = {
       new CompressionPlugin()
     ] : [])
   ]
-};
-
-if (!config.DEBUG) {
-  let originalLoaders = clientConfig.module.loaders[1].loaders;
-  delete clientConfig.module.loaders[1].loaders;
-  clientConfig.module.loaders[1].loader = ExtractTextPlugin.extract(...originalLoaders);
 }
 
-export default clientConfig;
+// Replace loaders with "ExtractTextPlugin" if we are building for production
+if (!config.DEBUG) {
+  const originalLoaders = clientConfig.module.loaders[1].loaders
+  delete clientConfig.module.loaders[1].loaders
+  clientConfig.module.loaders[1].loader = ExtractTextPlugin.extract(...originalLoaders)
+}
+
+export default clientConfig

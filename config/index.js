@@ -1,5 +1,7 @@
 const DEBUG = !!process.env.DEBUG
 
+// TODO simplify and document this.
+
 export default {
   DEBUG,
   VERBOSE: DEBUG,

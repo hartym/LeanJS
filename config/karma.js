@@ -1,6 +1,6 @@
-require("babel-register");
+require('babel-register')
 
-module.exports = function (config) {
+module.exports = function (config) {  // eslint-disable-line func-names
   config.set({
     // where is my code?
     basePath: '../',
@@ -31,8 +31,8 @@ module.exports = function (config) {
 
     coverageReporter: {
       reporters: [
-        {type: 'html', dir: 'coverage/'},
-        {type: 'text', file: 'coverage.txt'}
+        { type: 'html', dir: 'coverage/' },
+        { type: 'text', file: 'coverage.txt' }
       ]
     },
 
@@ -48,5 +48,5 @@ module.exports = function (config) {
     webpackMiddleware: {
       stats: 'errors-only'
     }
-  });
-};
+  })
+}

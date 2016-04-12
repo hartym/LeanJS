@@ -1,4 +1,3 @@
-import path from 'path'
 import config from '../..'
 
 export default {
@@ -16,4 +15,4 @@ export default {
       sourceMap: config.DEBUG
     })}`
   ]
-};
+}

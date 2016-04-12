@@ -12,8 +12,8 @@ const AUTOPREFIXER_BROWSERS = [
   'Explorer >= 9',
   'iOS >= 7',
   'Opera >= 12',
-  'Safari >= 7.1',
-];
+  'Safari >= 7.1'
+]
 
 const config = {
   // Input
@@ -23,7 +23,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, '../../build'),
     publicPath: '/',
-    sourcePrefix: '  ',
+    sourcePrefix: '  '
   },
 
   // Loaders
@@ -31,7 +31,7 @@ const config = {
 
   resolve: {
     root: path.resolve(__dirname, '../src'),
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.json'],
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.json']
   },
 
   cache: DEBUG,
@@ -46,22 +46,22 @@ const config = {
     chunks: VERBOSE,
     chunkModules: VERBOSE,
     cached: VERBOSE,
-    cachedAssets: VERBOSE,
+    cachedAssets: VERBOSE
   },
 
   plugins: [],
 
   sassLoader: {
-    includePaths: [path.resolve(__dirname, "../node_modules")]
+    includePaths: [path.resolve(__dirname, '../node_modules')]
   },
 
-  postcss(bundler) {
+  postcss (bundler) {
     return [
       require('postcss-import')({ addDependencyTo: bundler }),
       require('precss')(),
-      require('autoprefixer')({ browsers: AUTOPREFIXER_BROWSERS }),
-    ];
-  },
+      require('autoprefixer')({ browsers: AUTOPREFIXER_BROWSERS })
+    ]
+  }
 }
 
-export default config;
+export default config

@@ -1,5 +1,5 @@
-import { DEBUG } from '../..';
-import path from 'path';
+import { DEBUG } from '../..'
+import path from 'path'
 
 export default {
   test: /\.jsx?$/,
@@ -29,5 +29,5 @@ export default {
       ]
     ]
   }
-};
+}
 
