@@ -1,7 +1,18 @@
 language: node_js
 node_js:
-  - "5"
+  - "4.4"
   - "5.1"
+env:
+  - CXX=clang-3.6
+  - CONTINUOUS_INTEGRATION=1
+addons:
+  apt:
+    sources:
+      - llvm-toolchain-precise-3.6
+      - ubuntu-toolchain-r-test
+    packages:
+      - clang-3.6
+      - g++-4.8
 install:
   - npm install
 before_script:
