@@ -1,6 +1,9 @@
 LeanJS
 ======
 
+.. image:: https://travis-ci.org/hartym/LeanJS.svg?branch=master
+    :target: https://travis-ci.org/hartym/LeanJS
+
 Yet another starter kit for Universal NodeJS applications using React, Redux,
 Webpack and Bootstrap 4.
 
