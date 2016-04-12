@@ -4,7 +4,11 @@ LeanJS
 Yet another starter kit for Universal NodeJS applications using React, Redux,
 Webpack and Bootstrap 4.
 
-Dependency choice:
+.. image:: https://travis-ci.org/hartym/LeanJS.svg?branch=master
+    :target: https://travis-ci.org/hartym/LeanJS
+
+Dependencies
+::::::::::::
 
 * Babel
 * Express
@@ -15,7 +19,8 @@ Dependency choice:
 
 And a few glue libraries (like react-redux and react-router-redux).
 
-Tests, coverage and linting:
+Tests, coverage and code style
+::::::::::::::::::::::::::::::
 
 * ESLint with "JavaScript Standard Style" and a few addons to make it behave correctly with React.
 * Istanbul
@@ -44,8 +49,8 @@ Run (development)
     make
 
 
-Tests and code style
-::::::::::::::::::::
+Tests and code style check
+::::::::::::::::::::::::::
 
     make lint
     make test
