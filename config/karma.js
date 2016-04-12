@@ -30,9 +30,14 @@ module.exports = function (config) {  // eslint-disable-line func-names
     reporters: ['tap', 'coverage'],
 
     coverageReporter: {
+      // specify a common output directory
+      dir: 'coverage',
       reporters: [
-        { type: 'html', dir: 'coverage/' },
-        { type: 'text', file: 'coverage.txt' }
+        // reporters not supporting the `file` property
+        { type: 'html', subdir: 'html' },
+        { type: 'lcov', subdir: '.' },
+        { type: 'text', subdir: '.', file: 'full.txt' },
+        { type: 'text-summary', subdir: '.', file: 'summary.txt' }
       ]
     },
 
