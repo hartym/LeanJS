@@ -1,14 +1,16 @@
 import React from 'react'
-import { Route, IndexRoute } from 'react-router'
+import { Router, Route, IndexRoute } from 'react-router'
 import Layout from './example/components/Layout'
 import Home from './example/components/Home'
 import About from './example/components/About'
 
-const routes = (
+export default (
   <Route path="/" component={Layout}>
-    <IndexRoute component={Home} />
-    <Route path="about" component={About} />
+    <IndexRoute component={Home}/>
+    <Route path="about" component={About}/>
   </Route>
-)
+);
 
-export default routes
+if (module.hot) {
+  module.hot.accept()
+}

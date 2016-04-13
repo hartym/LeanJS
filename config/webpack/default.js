@@ -1,7 +1,5 @@
 import path from 'path'
-
-import { DEBUG, VERBOSE } from '..'
-
+import config from '../index'
 import loaders from './loaders'
 
 const AUTOPREFIXER_BROWSERS = [
@@ -15,7 +13,7 @@ const AUTOPREFIXER_BROWSERS = [
   'Safari >= 7.1'
 ]
 
-const config = {
+const defaultWebpackConfig = {
   // Input
   context: path.resolve(__dirname, '../../src'),
 
@@ -29,32 +27,42 @@ const config = {
   // Loaders
   module: { loaders },
 
+  // is it the right place ? at least needed server side for HMR. Is it required if DEBUG == false?
+  recordsPath: path.resolve(__dirname, '../../build/_records'),
+
   resolve: {
     root: path.resolve(__dirname, '../../src'),
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.json']
   },
 
-  cache: DEBUG,
-  debug: DEBUG,
+  // Cache generated modules and chunks to improve performance for multiple incremental builds.
+  cache: config.DEBUG,
+
+  // Switch loaders to debug mode.
+  debug: config.DEBUG,
+
+  // TODO Use debug here to choose value?
+  devtool: 'source-map',
 
   stats: {
     colors: true,
-    reasons: DEBUG,
-    hash: VERBOSE,
-    version: VERBOSE,
+    reasons: config.DEBUG,
+    hash: config.VERBOSE,
+    version: config.VERBOSE,
     timings: true,
-    chunks: VERBOSE,
-    chunkModules: VERBOSE,
-    cached: VERBOSE,
-    cachedAssets: VERBOSE
+    chunks: config.VERBOSE,
+    chunkModules: config.VERBOSE,
+    cached: config.VERBOSE,
+    cachedAssets: config.VERBOSE
   },
 
   plugins: [],
 
   sassLoader: {
     includePaths: [path.resolve(__dirname, '../node_modules')]
-  },
+  }
 
+  /*
   postcss (bundler) {
     return [
       require('postcss-import')({ addDependencyTo: bundler }),
@@ -62,6 +70,7 @@ const config = {
       require('autoprefixer')({ browsers: AUTOPREFIXER_BROWSERS })
     ]
   }
+  */
 }
 
-export default config
+export default defaultWebpackConfig

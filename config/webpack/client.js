@@ -13,7 +13,7 @@ const clientConfig = {
 
   output: {
     ...defaultConfig.output,
-    path: path.join(defaultConfig.output.path, 'public'),
+    path: path.join(defaultConfig.output.path, 'public/'),
     filename: config.DEBUG ? '[name].js?[chunkhash]' : '[name].[chunkhash].js',
     chunkFilename: config.DEBUG ? '[name].[id].js?[chunkhash]' : '[name].[id].[chunkhash].js'
   },
@@ -49,8 +49,8 @@ const clientConfig = {
   ]
 }
 
-// Replace loaders with "ExtractTextPlugin" if we are building for production
 if (!config.DEBUG) {
+  // Production: Replace loaders with "ExtractTextPlugin"
   const originalLoaders = clientConfig.module.loaders[1].loaders
   delete clientConfig.module.loaders[1].loaders
   clientConfig.module.loaders[1].loader = ExtractTextPlugin.extract(...originalLoaders)

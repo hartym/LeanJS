@@ -9,7 +9,7 @@ const About = () => (
       available out there.
     </p>
     <p className="lead">
-      Same Same but Different.
+      «Same Same but Different.»
     </p>
     <p className="lead">
       Leaner, mostly.

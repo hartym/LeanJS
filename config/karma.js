@@ -20,7 +20,7 @@ module.exports = function (config) {  // eslint-disable-line func-names
       'test/**/*.js'
     ],
 
-    // we need all our source to be processed by webpack, as ES6 is not understandable by browsers.
+    // we need all our source to be processed by Webpack, as ES6 is not understandable by browsers.
     preprocessors: {
       'test/**/*.js': ['webpack'],
       'src/**/*.js': ['webpack']
@@ -41,7 +41,7 @@ module.exports = function (config) {  // eslint-disable-line func-names
       ]
     },
 
-    // Load our Karma specific webpack configuration, that extends the base one.
+    // Load our Karma specific Webpack configuration, that extends the base one.
     webpack: require('./webpack/karma'),
 
     // TODO: is there any reason for that?

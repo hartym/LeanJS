@@ -4,7 +4,7 @@ import config from '../index'
 import defaultConfig from './default'
 
 /**
- * This is webpack configuration for server side javascript, aimed for a build
+ * This is Webpack configuration for server side javascript, aimed for a build
  * without intrumentation (like dev middleware or hot module reload).
  *
  * Instrumentation will be added by the runServer script, if needed.
@@ -36,6 +36,7 @@ const serverConfig = {
       cb(null, Boolean(isExternal))
     }
   ],
+
   node: {
     console: false,
     global: false,
@@ -44,7 +45,8 @@ const serverConfig = {
     __filename: false,
     __dirname: false
   },
-  devtool: 'source-map',
+
+
   plugins: [
     ...defaultConfig.plugins,
     new webpack.DefinePlugin({ ...config, 'process.env.BROWSER': false }),

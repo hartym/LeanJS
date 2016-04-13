@@ -20,6 +20,7 @@ import configureStore from './store'
 // Styles.
 require('./styles/index.scss')
 
+
 // Configure store and browser-friendly history
 const store = configureStore(browserHistory, window.__INITIAL_STATE__)
 const history = syncHistoryWithStore(browserHistory, store)
@@ -33,16 +34,10 @@ const render = () => {
   // Render the client side react component.
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={history} routes={routes} />
+      <Router history={history} routes={routes}/>
     </Provider>,
     document.getElementById('root')
   )
 }
 
 render()
-
-// Hot Module Reload?
-if (module.hot) {
-  // Whenever a new version of App.js is available
-  module.hot.accept('./routes', () => setTimeout(render))
-}
