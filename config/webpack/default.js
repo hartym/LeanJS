@@ -60,9 +60,8 @@ const defaultWebpackConfig = {
 
   sassLoader: {
     includePaths: [path.resolve(__dirname, '../node_modules')]
-  }
+  },
 
-  /*
   postcss (bundler) {
     return [
       require('postcss-import')({ addDependencyTo: bundler }),
@@ -70,7 +69,6 @@ const defaultWebpackConfig = {
       require('autoprefixer')({ browsers: AUTOPREFIXER_BROWSERS })
     ]
   }
-  */
 }
 
 export default defaultWebpackConfig

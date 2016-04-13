@@ -8,7 +8,7 @@ class Layout extends React.Component {
         <nav className="navbar navbar-fixed-top navbar-light bg-faded">
           <div className="container">
             <IndexLink className="navbar-brand" to="/">
-              <i className="fa fa-code"/>
+              <i className="fa fa-code" />
               {' '}
               LeanJS
             </IndexLink>

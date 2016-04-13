@@ -10,7 +10,7 @@ class ReadTheDocs extends React.Component {
       >
         <i className="fa fa-book" />{' '}Read the docs
       </a>
-    );
+    )
   }
 }
 

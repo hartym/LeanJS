@@ -17,7 +17,6 @@ import routes from './routes'
 import configureStore from './store'
 import morgan from 'morgan'
 
-
 function renderElementWithState (store, element) {
   const innerHtml = ReactDOMServer.renderToString(element)
   const head = Helmet.rewind()
@@ -43,7 +42,6 @@ function renderElementWithState (store, element) {
 </html>`
 }
 
-
 /**
  * Create HTML from router props.
  */
@@ -59,8 +57,8 @@ function render (store, renderProps) {
 /**
  * Configure server
  */
-function createHandler (handler) {
-  handler = handler || new Express();
+function createHandler (baseHandler) {
+  const handler = baseHandler || new Express()
 
   handler.use(morgan('combined'))
   // Add production middlewares
@@ -77,7 +75,7 @@ function createHandler (handler) {
     const store = configureStore(memoryHistory)
     const history = syncHistoryWithStore(memoryHistory, store)
 
-    match({ history, routes: routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
       if (error) {
         res.status(500).send(error.message)
       } else if (redirectLocation) {
@@ -93,7 +91,6 @@ function createHandler (handler) {
   return handler
 }
 
-
 const defaultHandler = createHandler()
 
 /**
@@ -106,7 +103,7 @@ const defaultHandler = createHandler()
  */
 if (require.main === module) {
   require('http').createServer(defaultHandler).listen(config.PORT, () => {
-    console.log('[http] Listening to :' + config.PORT);
+    console.log(`[http] Server listening to :${config.PORT}`)  // eslint-disable-line no-console
   })
 }
 

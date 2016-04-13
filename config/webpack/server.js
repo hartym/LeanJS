@@ -46,7 +46,6 @@ const serverConfig = {
     __dirname: false
   },
 
-
   plugins: [
     ...defaultConfig.plugins,
     new webpack.DefinePlugin({ ...config, 'process.env.BROWSER': false }),
