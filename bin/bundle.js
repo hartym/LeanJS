@@ -7,23 +7,32 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import webpack from 'webpack';
-import webpackConfig from '../config/webpack';
+import webpack from 'webpack'
+import webpackClientConfig from '../config/webpack/client'
+import webpackServerConfig from '../config/webpack/server'
+import logStats from './lib/log-stats'
 
 /**
  * Creates application bundles from the source files.
  */
-function bundle() {
+function bundle () {
   return new Promise((resolve, reject) => {
-    webpack(webpackConfig).run((err, stats) => {
+    webpack(webpackClientConfig).run((err, stats) => {
       if (err) {
-        return reject(err);
+        return reject(err)
       }
+      logStats('webpack/browser', stats);
 
-      console.log(stats.toString(webpackConfig[0].stats));
-      return resolve();
-    });
-  });
+      webpack(webpackServerConfig).run((err2, stats2) => {
+        if (err2) {
+          return reject(err2)
+        }
+        logStats('webpack/server', stats2)
+
+        return resolve()
+      })
+    })
+  })
 }
 
 export default bundle;

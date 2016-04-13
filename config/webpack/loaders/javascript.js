@@ -7,7 +7,8 @@ export default {
   include: [
     path.resolve(__dirname, '../../../src'),
     path.resolve(__dirname, '../../../config'),
-    path.resolve(__dirname, '../../../test')
+    path.resolve(__dirname, '../../../test'),
+    path.resolve(__dirname, '../../../build/assets')
   ],
   query: {
     // https://github.com/babel/babel-loader#options
