@@ -17,6 +17,11 @@ Webpack and Bootstrap 4.
     :target: https://coveralls.io/github/hartym/LeanJS?branch=master
 
 
+.. image:: https://readthedocs.org/projects/leanjs/badge/?version=doc
+    :target: http://leanjs.readthedocs.org/en/doc/?badge=doc
+    :alt: Documentation Status
+
+
 Dependencies
 ::::::::::::
 
