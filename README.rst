@@ -18,7 +18,7 @@ Webpack and Bootstrap 4.
 
 
 .. image:: https://readthedocs.org/projects/leanjs/badge/?version=latest
-    :target: http://leanjs.readthedocs.org/en/doc/?badge=latest
+    :target: http://leanjs.readthedocs.org/en/latest/?badge=latest
     :alt: Documentation Status
 
 
