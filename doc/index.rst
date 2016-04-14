@@ -4,6 +4,11 @@ LeanJS
 LeanJS is a clean, simple (yet featureful) opinionated NodeJS + React + Reduc starter-kit /
 boilerplate projet.
 
+* :doc:`install`
+* :doc:`features`
+* :doc:`recipes`
+* :doc:`reference`
+
 
 Goals
 :::::
