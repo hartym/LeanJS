@@ -5,7 +5,7 @@ DOCKER_SERVER ?= $(shell docker-machine ip)
 DOCKER_IMAGE ?= rdorgueil/leanjs
 
 # Phony targets (targets without matching file)
-.PHONY: start build docker-build docker-run docker-run-bash test
+.PHONY: start build doc docker-build docker-run docker-run-bash lint test
 
 # Start a development server.
 # You need to run "npm install" before that.
@@ -16,6 +16,14 @@ start:
 # It will be self contained, and it's the base of the docker image.
 build:
 	npm run build
+
+# Install dependencies (dev + prod)
+install:
+	npm install
+
+# Build the html documentation. Read the `doc` subdirectory's Makefile if you want more options than HTML.
+doc:
+	(cd doc; make html)
 
 # Build a production docker image.
 docker-build: build

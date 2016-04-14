@@ -1,15 +1,41 @@
-.. LeanJS documentation master file, created by
-   sphinx-quickstart on Wed Apr 13 21:21:11 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+LeanJS
+======
 
-Welcome to LeanJS's documentation!
-==================================
+LeanJS is a clean, simple (yet featureful) opinionated NodeJS + React + Reduc starter-kit /
+boilerplate projet.
 
-Contents:
+
+Goals
+:::::
+
+* Setup a full featured project fast.
+* Don't setup a hammer if you only need a screwdriver.
+* Focus on value, get to code in seconds, not hours.
+
+
+
+
+:doc:`recipes`
+::::::::::::::
+
+* :doc:`recipes/bootstrap`
+* :doc:`recipes/font-awesome`
+
+
+Miscellaneous
+:::::::::::::
+
+* :doc:`faq`
+
+
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
+
+    install
+    features
+    recipes
+    reference
 
 
 
@@ -17,6 +43,5 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 
