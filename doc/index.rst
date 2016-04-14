@@ -1,8 +1,7 @@
 LeanJS
 ======
 
-LeanJS is a clean, simple (yet featureful) opinionated NodeJS + React + Reduc starter-kit /
-boilerplate projet.
+LeanJS is a clean, simple (yet featureful) opinionated NodeJS / React / Redux starter kit.
 
 
 Goals
