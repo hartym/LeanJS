@@ -41,6 +41,8 @@ Goals
 * `Frequently Asked Questions <http://leanjs.readthedocs.org/en/latest/faq.html>`_
 
 
+.. include:: doc/index.rst
+
 ----
 
 Made with ♥ by `Romain Dorgueil <https://twitter.com/rdorgueil>`_ and `contributors <https://github.com/hartym/LeanJS/graphs/contributors>`_.
