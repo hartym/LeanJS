@@ -40,8 +40,8 @@ React. It works well in the «isomoprhic environment», abstracting the concept 
 * https://github.com/reactjs/react-router/tree/master/docs
 
 
-`Express <http://expressjs.com/>`_
-----------------------------------
+`Express <http://expressjs.com/>`_ (see :doc:`reference/server`)
+-------------------------------------------------------------------
 
 `Express <http://expressjs.com/>`_, not to be presented anymore, is a minimalist web application
 development framework.
@@ -50,8 +50,8 @@ development framework.
 * https://github.com/senchalabs/connect/blob/master/Readme.md
 
 
-`Bootstrap 4 <http://v4-alpha.getbootstrap.com/getting-started/introduction/>`_ and `Font Awesome <https://fortawesome.github.io/Font-Awesome/icons/>`_
--------------------------------------------------------------------------------------------------------------------------------------------------------
+`Bootstrap 4 <http://v4-alpha.getbootstrap.com/getting-started/introduction/>`_ and `Font Awesome <https://fortawesome.github.io/Font-Awesome/icons/>`_ (see :doc:`reference/style`)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 `Bootstrap 4 <http://v4-alpha.getbootstrap.com/getting-started/introduction/>`_ and
 `Font Awesome <https://fortawesome.github.io/Font-Awesome/icons/>`_ are so popular nowadays
@@ -65,8 +65,8 @@ we don't ship with Bootact-Restrap). If you want one of those low value libs, fe
 fun in your project.
 
 
-`SASS <http://sass-lang.com/>`_
--------------------------------
+`SASS <http://sass-lang.com/>`_ (see :doc:`reference/style`)
+------------------------------------------------------------
 
 `SASS <http://sass-lang.com/>`_ is our CSS preprocessor of choice. It is already used by bootstrap,
 font-awesome and other well enginered fronted libraries, making it very easy to integrate and
@@ -103,7 +103,7 @@ build. Just try to run `make build` and you'll get a clean and fresh production 
 build directory. You're only a `(cd build; npm install --production && node server)` away of
 running a lighting fast, pure, tool-free version of your project.
 
-ESLint (see :doc:`reference/linting`)
+ESLint (see :doc:`reference/testing`)
 -------------------------------------
 
 `make lint` is your friend.
@@ -117,8 +117,8 @@ Help needed about the "right" coding standards for React/ES6/Node.
 
 It will create a `coverage` directory with the matching reports.
 
-`Browsersync<https://www.browsersync.io/>`_ and `Nodemon <http://nodemon.io/>`_ (see :doc:`reference/devserver`)
-----------------------------------------------------------------------------------------------------------------
+`Browsersync<https://www.browsersync.io/>`_ and `Nodemon <http://nodemon.io/>`_ (see :doc:`reference/server`)
+-----------------------------------------------------------------------------------------------------------------
 
 We use browser sync as a proxy for a few reasons.
 

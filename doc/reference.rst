@@ -12,3 +12,15 @@ Directory structure:
 
 
 (TODO: this is a work in progress, reference is lacking a lot of sections as of now).
+
+
+.. toctree::
+    :maxdepth: 2
+
+    reference/docker
+    reference/hot-module-reload
+    reference/make
+    reference/server
+    reference/style
+    reference/testing
+    reference/webpack

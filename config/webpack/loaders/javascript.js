@@ -1,4 +1,4 @@
-import { DEBUG } from '../..'
+import config from '../../index'
 import path from 'path'
 
 export default {
@@ -12,7 +12,7 @@ export default {
   ],
   query: {
     // https://github.com/babel/babel-loader#options
-    cacheDirectory: DEBUG,
+    cacheDirectory: config.DEBUG,
 
     // https://babeljs.io/docs/usage/options/
     babelrc: false,
@@ -23,7 +23,7 @@ export default {
     ],
     plugins: [
       'transform-runtime',
-      ...DEBUG ? [] : [
+      ...config.DEBUG ? [] : [
         'transform-react-remove-prop-types',
         'transform-react-constant-elements',
         'transform-react-inline-elements'

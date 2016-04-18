@@ -44,3 +44,4 @@ lint:
 # Run the test suite. For now, only client side tests are running, in a chrome browser.
 test:
 	$(NODE_BIN)/karma start config/karma.js | bin/faucet
+
