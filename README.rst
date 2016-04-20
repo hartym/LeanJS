@@ -8,16 +8,17 @@ LeanJS is a clean, simple (yet featureful) opinionated NodeJS / React / Redux st
     :target: https://travis-ci.org/hartym/LeanJS
     :alt: Continuous Integration Status
 
-
 .. image:: https://david-dm.org/hartym/LeanJS.svg
     :target: https://david-dm.org/hartym/LeanJS
     :alt: Dependencies Status
 
+.. image:: https://david-dm.org/hartym/LeanJS/dev-status.svg
+    :target: https://david-dm.org/hartym/LeanJS#info=devDependencies
+    :alt: Development Dependencies Status
 
 .. image:: https://coveralls.io/repos/github/hartym/LeanJS/badge.svg?branch=master
     :target: https://coveralls.io/github/hartym/LeanJS?branch=master
     :alt: Coverage Status
-
 
 .. image:: https://readthedocs.org/projects/leanjs/badge/?version=latest
     :target: http://leanjs.readthedocs.org/en/latest/?badge=latest
