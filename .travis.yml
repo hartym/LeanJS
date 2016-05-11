@@ -1,7 +1,8 @@
 language: node_js
 node_js:
-  - "4.4"
-  - "5.1"
+  - "4"
+  - "5"
+  - "6"
 env:
   - CONTINUOUS_INTEGRATION=1 CXX=clang-3.6
 addons:
