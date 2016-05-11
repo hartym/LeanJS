@@ -21,14 +21,16 @@ import configureStore from './store'
 require('./styles/index.scss')
 
 // Configure store and browser-friendly history
+/* eslint-disable no-underscore-dangle */
 const store = configureStore(browserHistory, window.__INITIAL_STATE__)
+/* eslint-enable no-underscore-dangle */
 const history = syncHistoryWithStore(browserHistory, store)
 
 // Apparently, fat fingers need to go faster on mobiles. Or is it browsers?
 FastClick.attach(document.body)
 
 const render = () => {
-  let routes = require('./routes').default
+  let routes = require('./routes').default // eslint-disable-line global-require
 
   // Render the client side react component.
   ReactDOM.render(

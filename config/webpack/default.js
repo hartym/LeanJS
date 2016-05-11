@@ -62,6 +62,7 @@ const defaultWebpackConfig = {
     includePaths: [path.resolve(__dirname, '../node_modules')]
   },
 
+  /* eslint-disable global-require */
   postcss (bundler) {
     return [
       require('postcss-import')({ addDependencyTo: bundler }),
@@ -69,6 +70,7 @@ const defaultWebpackConfig = {
       require('autoprefixer')({ browsers: AUTOPREFIXER_BROWSERS })
     ]
   }
+  /* eslint-enable global-require */
 }
 
 export default defaultWebpackConfig

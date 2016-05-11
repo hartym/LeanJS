@@ -41,8 +41,8 @@ module.exports = function (config) {  // eslint-disable-line func-names
       ]
     },
 
-    // Load our Karma specific Webpack configuration, that extends the base one.
-    webpack: require('./webpack/karma'),
+    // Karma specific Webpack configuration, that extends the base one.
+    webpack: require('./webpack/karma'), // eslint-disable-line global-require
 
     // TODO: is there any reason for that?
     webpackServer: {

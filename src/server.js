@@ -5,23 +5,24 @@
  */
 
 import Express from 'express'
-import path from 'path'
+import Helmet from 'react-helmet'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import compression from 'compression'
+import morgan from 'morgan'
+import path from 'path'
 import { Provider } from 'react-redux'
 import { match, RouterContext, createMemoryHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import Helmet from 'react-helmet'
 import config from '../config'
 import routes from './routes'
 import configureStore from './store'
-import morgan from 'morgan'
 
 function renderElementWithState (store, element) {
   const innerHtml = ReactDOMServer.renderToString(element)
   const head = Helmet.rewind()
 
-  const assets = require('../build/assets')
+  const assets = require('../build/assets') // eslint-disable-line global-require
   const mainJs = assets.main.js
   const mainCss = assets.main.css
     ? `<link href="${assets.main.css}" media="all" rel="stylesheet" />` : ''
@@ -47,11 +48,10 @@ function renderElementWithState (store, element) {
  */
 function render (store, renderProps) {
   return renderElementWithState(store, (
-      <Provider store={store}>
-        <RouterContext {...renderProps} />
-      </Provider>
-    )
-  )
+    <Provider store={store}>
+      <RouterContext {...renderProps} />
+    </Provider>
+  ))
 }
 
 /**
@@ -63,7 +63,7 @@ function createHandler (baseHandler) {
   handler.use(morgan('combined'))
   // Add production middlewares
   if (!config.DEBUG) {
-    handler.use(require('compression')())
+    handler.use(compression())
   }
 
   // Static files middleware
@@ -102,9 +102,11 @@ const defaultHandler = createHandler()
  * I'd like to remove it.
  */
 if (require.main === module) {
+  /* eslint-disable global-require */
   require('http').createServer(defaultHandler).listen(config.PORT, () => {
     console.log(`[http] Server listening to :${config.PORT}`)  // eslint-disable-line no-console
   })
+  /* eslint-enable global-require */
 }
 
 export default defaultHandler

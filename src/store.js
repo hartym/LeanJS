@@ -14,7 +14,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
  */
 function buildRootReducer () {
   return combineReducers({
-    ...require('./reducers').default,
+    ...require('./reducers').default, // eslint-disable-line global-require
     routing: routerReducer
   })
 }
