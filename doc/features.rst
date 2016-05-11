@@ -117,7 +117,7 @@ Help needed about the "right" coding standards for React/ES6/Node.
 
 It will create a `coverage` directory with the matching reports.
 
-`Browsersync<https://www.browsersync.io/>`_ and `Nodemon <http://nodemon.io/>`_ (see :doc:`reference/server`)
+`Browsersync <https://www.browsersync.io/>`_ and `Nodemon <http://nodemon.io/>`_ (see :doc:`reference/server`)
 -----------------------------------------------------------------------------------------------------------------
 
 We use browser sync as a proxy for a few reasons.
