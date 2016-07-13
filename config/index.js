@@ -10,5 +10,5 @@ export default {
   DEVELOPMENT: DEBUG,
   'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"',
   __DEV__: DEBUG,
-  PORT: 3000
+  PORT: 3080
 }

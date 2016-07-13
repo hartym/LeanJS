@@ -70,7 +70,7 @@ export default function start () {
           ...(config.DEBUG ? {} : { notify: false, ui: false }),
           open: false,
           proxy: {
-            target: 'localhost:3000',
+            target: 'localhost:3080',
             middleware: [
               webpackMiddleware,
               webpackHotMiddleware(bundler),
