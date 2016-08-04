@@ -3,6 +3,7 @@ NODE_BIN ?= node_modules/.bin
 BABEL ?= $(NODE_BIN)/babel-node
 DOCKER_SERVER ?= $(shell docker-machine ip)
 DOCKER_IMAGE ?= rdorgueil/leanjs
+GIT_CHANGES = $(shell git status --porcelain | wc -l)
 
 # Phony targets (targets without matching file)
 .PHONY: start build doc docker-build docker-run docker-run-bash lint test
@@ -20,6 +21,14 @@ build:
 # Install dependencies (dev + prod)
 install:
 	npm install
+
+# Removes anything that was generated, including uncommited changes and node_modules
+clean:
+	@if [ $(GIT_CHANGES) -gt 0 ]; then \
+		echo "You have uncommited changes, aborting."; \
+		exit 1; \
+	fi
+	git clean -fdx
 
 # Build the html documentation. Read the `doc` subdirectory's Makefile if you want more options than HTML.
 doc:
