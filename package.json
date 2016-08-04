@@ -1,6 +1,6 @@
 {
   "name": "leanjs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Yet another starter kit for Universal NodeJS applications using React, Redux, Webpack and Bootstrap 4.",
   "babel": {
     "presets": [
