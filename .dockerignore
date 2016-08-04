@@ -3,6 +3,7 @@
 .git
 .idea
 build
-docs
+build/node_modules
 dist
+docs
 node_modules

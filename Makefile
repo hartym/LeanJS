@@ -27,15 +27,15 @@ doc:
 
 # Build a production docker image.
 docker-build: build
-	(cd build; NPM_CONFIG_REGISTRY=http://$(DOCKER_SERVER):8081/content/groups/npm/ docker build -t $(DOCKER_IMAGE) .)
+	(cd build; docker build -t $(DOCKER_IMAGE) .)
 
 # Runs the docker image (won't rebuild, you're responsible for triggering the builds).
 docker-run:
-	docker run -it -p 3000:3000 $(DOCKER_IMAGE)
+	docker run -it -p 3080:3080 $(DOCKER_IMAGE)
 
 # Drop a shell in the docker image, same rules as above for the builds.
 docker-run-bash:
-	docker run -it -p 3000:3000 $(DOCKER_IMAGE) bash
+	docker run -it -p 3080:3080 $(DOCKER_IMAGE) bash
 
 # Check coding standards
 lint:

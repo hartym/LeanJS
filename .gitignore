@@ -1,6 +1,7 @@
 .DS_Store
 /.idea
 /build
+/build/node_modules
 /coverage
 /doc/_build
 /node_modules

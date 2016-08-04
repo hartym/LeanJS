@@ -8,7 +8,6 @@
  * TODO: make the hot reload thing work, react-router make it tough to get it right.
  */
 
-import 'babel-polyfill'
 import FastClick from 'fastclick'
 import React from 'react'
 import ReactDOM from 'react-dom'
