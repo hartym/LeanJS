@@ -4,6 +4,7 @@ BABEL ?= $(NODE_BIN)/babel-node
 DOCKER_SERVER ?= $(shell docker-machine ip)
 DOCKER_IMAGE ?= rdorgueil/leanjs
 GIT_CHANGES = $(shell git status --porcelain | wc -l)
+VERSION ?= $(shell git describe)
 
 # Phony targets (targets without matching file)
 .PHONY: start build doc docker-build docker-run docker-run-bash lint test
@@ -37,14 +38,20 @@ doc:
 # Build a production docker image.
 docker-build: build
 	(cd build; docker build -t $(DOCKER_IMAGE) .)
+	docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE):$(VERSION)
 
 # Runs the docker image (won't rebuild, you're responsible for triggering the builds).
 docker-run:
-	docker run -it -p 3080:3080 $(DOCKER_IMAGE)
+	docker run -it -p 3080:3080 $(DOCKER_IMAGE):$(VERSION)
+
+# Push current and latest version. TODO: don't push latest if it's not?
+docker-push:
+	docker push $(DOCKER_IMAGE):$(VERSION)
+	docker push $(DOCKER_IMAGE):latest
 
 # Drop a shell in the docker image, same rules as above for the builds.
 docker-run-bash:
-	docker run -it -p 3080:3080 $(DOCKER_IMAGE) bash
+	docker run -it -p 3080:3080 $(DOCKER_IMAGE):$(VERSION) bash
 
 # Check coding standards
 lint:
