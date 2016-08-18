@@ -8,3 +8,4 @@ RUN npm install --production
 COPY . /usr/src/app
 
 CMD [ "npm", "start" ]
+EXPOSE 3080
