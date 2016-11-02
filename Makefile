@@ -6,22 +6,26 @@ DOCKER_IMAGE ?= rdorgueil/leanjs
 GIT_CHANGES = $(shell git status --porcelain | wc -l)
 VERSION ?= $(shell git describe)
 
+# Utilities
+DOCKER ?= $(shell which docker)
+NPM ?= $(shell which yarn || which npm)
+
 # Phony targets (targets without matching file)
 .PHONY: start build doc docker-build docker-run docker-run-bash lint test
 
 # Start a development server.
 # You need to run "npm install" before that.
 start:
-	npm run start
+	$(NPM) run start
 
 # Builds a production-ready release, under /build.
 # It will be self contained, and it's the base of the docker image.
 build:
-	npm run build
+	$(NPM) run build
 
 # Install dependencies (dev + prod)
 install:
-	npm install
+	$(NPM) install
 
 # Removes anything that was generated, including uncommited changes and node_modules
 clean:
@@ -37,21 +41,21 @@ doc:
 
 # Build a production docker image.
 docker-build: build
-	(cd build; docker build -t $(DOCKER_IMAGE) .)
-	docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE):$(VERSION)
+	(cd build; $(DOCKER) build -t $(DOCKER_IMAGE) .)
+	$(DOCKER) tag $(DOCKER_IMAGE) $(DOCKER_IMAGE):$(VERSION)
 
 # Runs the docker image (won't rebuild, you're responsible for triggering the builds).
 docker-run:
-	docker run -it -p 3080:3080 $(DOCKER_IMAGE):$(VERSION)
+	$(DOCKER) run -it -p 3080:3080 $(DOCKER_IMAGE):$(VERSION)
 
 # Push current and latest version. TODO: don't push latest if it's not?
 docker-push:
-	docker push $(DOCKER_IMAGE):$(VERSION)
-	docker push $(DOCKER_IMAGE):latest
+	$(DOCKER) push $(DOCKER_IMAGE):$(VERSION)
+	$(DOCKER) push $(DOCKER_IMAGE):latest
 
 # Drop a shell in the docker image, same rules as above for the builds.
 docker-run-bash:
-	docker run -it -p 3080:3080 $(DOCKER_IMAGE):$(VERSION) bash
+	$(DOCKER) run -it -p 3080:3080 $(DOCKER_IMAGE):$(VERSION) bash
 
 # Check coding standards
 lint:
